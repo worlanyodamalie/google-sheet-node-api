@@ -5,7 +5,7 @@ const port = process.env.PORT || 3001
 const app = express();
 const cors = require('cors');
 const options = {
-    origin: ['http://localhost:3000','https://worlanyodamalie.github.io/dynamo',  'https://exploredynamo.com' , 'https://dynamo-tau.vercel.app','https://1gallon.com.gh'],
+    origin: [ 'https://exploredynamo.com' ,'https://1gallon.com.gh'],
     methods: 'POST',
 }
 
