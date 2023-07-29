@@ -5,7 +5,10 @@ const port = process.env.PORT || 3001
 const app = express();
 const cors = require('cors');
 const options = {
+    //uncomment when pushing
     origin: [ 'https://exploredynamo.com' ,'https://1gallon.com.gh'],
+   //comment when deploying
+    // origin: "http://localhost:3000/",
     methods: 'POST',
 }
 
@@ -54,10 +57,15 @@ app.post('/sheet' ,  async (req,res) => {
         // }
         //   );
         //   const sheets = google.sheets({ version: "v4", auth: jwt });
+        const spreadsheetId = contact?.type === "dynamo" ? process.env.SPREADSHEET_ID : process.env.ONE_GALLON_SPREADSHEET_ID
         const { sheets } = await authSheet();
 
+        //console.log(`spreadsheetId: ${spreadsheetId}`)
+
+       
+
         const response = await sheets.spreadsheets.values.append({
-            spreadsheetId: process.env.SPREADSHEET_ID,
+            spreadsheetId:  spreadsheetId,
             range: contact?.range ,
             valueInputOption: 'USER_ENTERED',
             requestBody: {
@@ -65,7 +73,6 @@ app.post('/sheet' ,  async (req,res) => {
             },
           });
 
-        //   console.log("response",response)
           return res.status(201).json({
              data: response.data,
              status: response.status
