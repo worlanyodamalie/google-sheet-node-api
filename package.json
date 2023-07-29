@@ -2,7 +2,7 @@
   "name": "google-sheet-node-api",
   "version": "1.0.0",
   "description": "Google sheet node api",
-  "main": "index.js",
+  "main": "api/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server"
