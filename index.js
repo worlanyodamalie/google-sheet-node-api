@@ -35,7 +35,9 @@ const authSheet = async () => {
 
 }
 
-
+app.get('/', (req, res) => {
+    res.send('This is a Google sheet node api..')
+  })
 
 app.post('/sheet' ,  async (req,res) => {
     const contact = req.body
