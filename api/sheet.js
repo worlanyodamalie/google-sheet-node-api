@@ -26,20 +26,17 @@ const corsOptions = {
 
 const corsHandler = cors(corsOptions);
 
-module.exports = corsHandler(async (req,res) => {
+
+
+const sheetHandler = async (req,res) => {
     const contact = req.body
 
-
     try {
-
-      
+     
         const spreadsheetId = contact?.type === "dynamo" ? process.env.SPREADSHEET_ID : process.env.ONE_GALLON_SPREADSHEET_ID
         const { sheets } = await authSheet();
 
         //console.log(`spreadsheetId: ${spreadsheetId}`)
-
-       
-
         const response = await sheets.spreadsheets.values.append({
             spreadsheetId:  spreadsheetId,
             range: contact?.range ,
@@ -58,4 +55,6 @@ module.exports = corsHandler(async (req,res) => {
         // console.log("error",e)
         return res.status(e.code || 500 ).send({message: e.message})
     }
-})
+}
+
+module.exports = corsHandler(sheetHandler);
