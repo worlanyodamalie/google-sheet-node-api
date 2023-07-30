@@ -11,6 +11,12 @@ module.exports = async (req,res) => {
         res.setHeader("Access-Control-Allow-Methods", "POST");
         res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
+         // Handle preflight requests
+         if (req.method === "OPTIONS") {
+            // Respond with a 200 status code for preflight requests
+            return res.status(200).end();
+        }
+
         if(req.method === "POST"){
             const contact = req.body
             try {
