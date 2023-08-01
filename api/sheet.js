@@ -43,7 +43,9 @@ const allowedOrigins = [ 'https://exploredynamo.com' ,'https://1gallon.com.gh','
                     status: response.status,
                   });
              } catch (error) {
-                return res.status(error.code || 500).send({ message: error.message });
+                return res.status(500).send({ message: error.message });
+
+                // return res.status(error.code || 500).send({ message: error.message });
              }
       }else{
         return res.status(405).send({ message: 'Method Not Allowed' });
