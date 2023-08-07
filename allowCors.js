@@ -2,8 +2,7 @@ const allowedOrigins = [
   'https://exploredynamo.com' ,
   'https://1gallon.com.gh',
   'https://exploredynamo.com/',
-  'https://1gallon.com.gh/',
-  'http://localhost:3001'
+  'https://1gallon.com.gh/'
 ];
 
 const allowCors = fn => async (req, res) => {
