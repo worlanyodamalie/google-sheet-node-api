@@ -10,10 +10,10 @@ const allowedOrigins = [ 'https://exploredynamo.com' ,'https://1gallon.com.gh','
 
       if(req.method === 'POST'){
              try {
-                // const spreadsheetId =
-                //   contact?.type === "dynamo"
-                //     ? process.env.SPREADSHEET_ID
-                //     : process.env.ONE_GALLON_SPREADSHEET_ID;
+                const spreadsheetId =
+                  contact?.type === "dynamo"
+                    ? process.env.SPREADSHEET_ID
+                    : process.env.ONE_GALLON_SPREADSHEET_ID;
 
                 const jwt = new google.auth.GoogleAuth({
                   credentials: {
@@ -30,7 +30,7 @@ const allowedOrigins = [ 'https://exploredynamo.com' ,'https://1gallon.com.gh','
                 const sheets = google.sheets({ version: 'v4', auth: jwt });
 
                 const response = await sheets.spreadsheets.values.append({
-                    spreadsheetId: process.env.SPREADSHEET_ID,
+                    spreadsheetId: spreadsheetId,
                     range: contact?.range,
                     valueInputOption: "USER_ENTERED",
                     requestBody: {
