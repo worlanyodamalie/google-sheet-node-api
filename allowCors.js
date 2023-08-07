@@ -3,6 +3,7 @@ const allowedOrigins = [
   'https://1gallon.com.gh',
   'https://exploredynamo.com/',
   'https://1gallon.com.gh/',
+  'http://localhost:3001'
 ];
 
 const allowCors = fn => async (req, res) => {
